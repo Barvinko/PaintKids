@@ -1,25 +1,25 @@
 let canvas = document.querySelector('canvas');
-
-canvas.width = canvas.clientWidth;
-canvas.height = canvas.clientHeight;
-
 let ctx = canvas.getContext('2d');
 
-ctx.lineWidth = 10;
-ctx.strokeStyle = 'yellow';
+function resizeCanvas() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = 'yellow';
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round'; 
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
 
 let sx = 0;
 let sy = 0;
 let isPainting = false;
 
-canvas.addEventListener('mousedown', function (e) {
+canvas.addEventListener('mouseover', function (e) {
+    isPainting = true;
     sx = e.offsetX;
     sy = e.offsetY;
-    isPainting = true;
-});
-
-canvas.addEventListener('mouseup', function (e) {
-    isPainting = false;
 });
 
 canvas.addEventListener('mouseleave', function (e) {

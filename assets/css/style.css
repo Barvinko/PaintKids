@@ -8,11 +8,13 @@
        height: 100vh;
        display: grid;
        place-items: center;
+       background-color: rgb(252, 158, 158);
     }
 
     canvas {
-        width: 800px;
-        height: 600px;
+        width: 100vw;
+        height: 100vh;
+        display: block;
         border: 1px dashed gray;
         box-shadow: 0px 0px 16px gray;
         border-radius: 16px;

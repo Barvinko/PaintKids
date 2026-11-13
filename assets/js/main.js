@@ -16,17 +16,37 @@ let sx = 0;
 let sy = 0;
 let isPainting = false;
 
-canvas.addEventListener('mouseover', function (e) {
+canvas.addEventListener('pointerenter', function (e) {
+    if (e.pointerType === 'mouse') {
+        isPainting = true;
+        sx = e.offsetX;
+        sy = e.offsetY;
+    }
+});
+
+canvas.addEventListener('pointerleave', function (e) {
+    if (e.pointerType === 'mouse') {
+        isPainting = false;
+    }
+});
+
+canvas.addEventListener('pointerdown', function (e) {
     isPainting = true;
     sx = e.offsetX;
     sy = e.offsetY;
 });
 
-canvas.addEventListener('mouseleave', function (e) {
+canvas.addEventListener('pointerup', function (e) {
+    if (e.pointerType !== 'mouse') {
+        isPainting = false;
+    }
+});
+
+canvas.addEventListener('pointercancel', function () {
     isPainting = false;
 });
 
-canvas.addEventListener('mousemove', function (e) {
+canvas.addEventListener('pointermove', function (e) {
     if (isPainting == true) {    
         let x = e.offsetX;
         let y = e.offsetY;
@@ -38,4 +58,3 @@ canvas.addEventListener('mousemove', function (e) {
         sy = y;
     }
 });
-
